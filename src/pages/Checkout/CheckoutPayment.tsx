@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { postOrder } from '../../store/actions/actions';
 import { RootState } from '../../store/reducers';
 import {
@@ -10,7 +10,6 @@ import {
   ScheduleItem,
 } from '../../store/types/checkout.types';
 import { ProductInCart } from '../../store/types/main.types';
-import { User } from '../../store/types/user.types';
 
 export interface IOrder {
   orderNumber: INumber | null;
@@ -37,20 +36,18 @@ const CheckoutPayment: FC<CheckoutPaymentProps> = ({
   order,
   orderDetails,
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user: User | null = useSelector((state: RootState) => state.user.user);
   const products: ProductInCart[] = useSelector(
     (state: RootState) => state.cart.cart,
   );
-  const isLoggedIn: boolean = !!user;
   const { orderNumber, orderAdress, orderTime }: IOrder = order;
   const orderBody: IOrderBody = {
     address: orderAdress?.adress ?? '',
     when: orderTime?.time ?? '',
     products,
     phone: orderNumber?.number ?? '',
-    email: user?.email ?? '',
+    // email: user?.email ?? '',
   };
 
   const checkIfOrderFieldsSelected = () => {
@@ -62,7 +59,7 @@ const CheckoutPayment: FC<CheckoutPaymentProps> = ({
   const checkoutSubmit = () => {
     dispatch(postOrder(orderBody));
     if (orderDetails) {
-      history.push('/orderConfirm');
+      navigate("/orderConfirm");
     }
   };
   return (

@@ -12,7 +12,6 @@ import { totalItemsSelector, totalAmountSelector } from '../../store/selectors';
 import { RootState } from '../../store/reducers';
 import { CartState } from '../../store/types/main.types';
 import { AppDispatch } from '../../store/store';
-import { User } from '../../store/types/user.types';
 
 const Cart: FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -22,7 +21,6 @@ const Cart: FC = () => {
   const totalItems: number = useSelector(totalItemsSelector);
 
   const totalAmount: number = useSelector(totalAmountSelector);
-  const user: User | null = useSelector((store: RootState) => store.user.user);
 
   return (
     <aside
@@ -65,9 +63,7 @@ const Cart: FC = () => {
           <Link
             to="/checkout"
             onClick={() => dispatch(toggleCart())}
-            className={classNames('bar', {
-              disabled: cart.length === 0 || !user,
-            })}
+            className={classNames('bar')}
           >
             <span>Checkout</span>
             <div className="bar__price">

@@ -2,11 +2,12 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from './ProductCard.module.sass';
-import { baseURL } from '../../../api/api';
-import { ReactComponent as Basket } from '../../../assets/basket.svg';
-import { addToCart, increaseAmount } from '../../../store/actions/actions';
-import { isInCartSelector } from '../../../store/selectors';
-import { Product } from '../../../store/types/main.types';
+import { baseURL } from '../../api/api';
+import basketImg from '../../assets/basket.svg';
+import { addToCart, increaseAmount } from '../../store/actions/actions';
+import { isInCartSelector } from '../../store/selectors';
+import { Product } from '../../store/types/main.types';
+import { ReactSVG } from 'react-svg';
 
 interface ProductCardProps {
   product: Product;
@@ -40,23 +41,15 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
       </Link>
       <div className={classes.footer}>
         <div className={classes.prices}>
-          {price !== finalPrice && (
-          <h4 className={classes.price}>
-            $
-            {price}
-          </h4>
-          )}
-          <h4 className="price">
-            $
-            {finalPrice}
-          </h4>
+          {price !== finalPrice && <h4 className={classes.price}>${price}</h4>}
+          <h4 className="price">${finalPrice}</h4>
         </div>
         <button
           type="button"
           className="btn btn-product"
           onClick={addToCartHandler}
         >
-          <Basket />
+          <ReactSVG src={basketImg} />
           Cart
         </button>
       </div>

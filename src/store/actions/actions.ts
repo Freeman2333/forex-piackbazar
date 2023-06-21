@@ -43,17 +43,10 @@ import {
 } from '../types/products.types';
 import { AppDispatch } from '../store';
 
-import {
-  UserToSubmit,
-  UserActionTypes,
-  User,
-  UserToSignin,
-} from '../types/user.types';
 
 import {
   TOGGLE_MODAL,
   TOGGLE_CART,
-  ADD_USER,
   ADD_TO_CART,
   ADD_CATEGORIES,
   ADD_PRODUCTS,
@@ -79,7 +72,6 @@ import {
   MODIFY_NUMBER,
   SET_IS_EDITING_NUMBER,
   SET_GET_PRODUCTS_CATEGORIES_PARAMS,
-  SET_ACTIVE_MODAL_COMPONENT,
 } from './actionTypes';
 import { instance } from '../../api/api';
 
@@ -88,27 +80,9 @@ type GetProductCeategoriesParams =
   | { '_where[_or][1][category.parentCategory.id]': number | undefined }
   | { _limit: number | undefined };
 
-export const addUser = (user: UserToSubmit) => instance.post('auth/local/register', user);
 
-export const getGoogleUser = (idToken: string) => instance.get(`/auth/google/callback${idToken}`);
-
-export const signinUser = (user: UserToSignin) => instance.post('auth/local', user);
-
-export const toggleModal = (): ToggleModalAction => ({ type: TOGGLE_MODAL });
-
-export const setActiveModalComponent = (
-  activeComponent: ActiveModalComponent,
-): MainActionTypes => ({
-  type: SET_ACTIVE_MODAL_COMPONENT,
-  payload: activeComponent,
-});
 
 export const toggleCart = (): CartActionTypes => ({ type: TOGGLE_CART });
-
-export const addUserToStore = (user: User | null): UserActionTypes => ({
-  type: ADD_USER,
-  payload: user,
-});
 
 
 export const addProducts = (products: Product[]): AddProductsAction => ({
@@ -122,32 +96,6 @@ export const addCategories = (
   type: ADD_CATEGORIES,
   payload: categories,
 });
-
-export const AddUserAction = (user: UserToSubmit) => async (dispatch: AppDispatch) => {
-  const userInfo = await addUser(user);
-  await dispatch(addUserToStore(userInfo.data.user));
-  toast.success(`welcome ${userInfo.data.user.username}`);
-  dispatch(toggleModal());
-  localStorage.setItem('token', userInfo.data.jwt);
-};
-
-export const signinUserAction = (user: UserToSignin) => async (dispatch: AppDispatch) => {
-  const userInfo = await signinUser(user);
-  await dispatch(addUserToStore(userInfo.data.user));
-  toast.success(`welcome ${userInfo.data.user.username}`);
-  dispatch(toggleModal());
-  localStorage.setItem('token', userInfo.data.jwt);
-};
-
-export const getGoogleUserAction = (idToken: string) => async (dispatch: AppDispatch) => {
-  try {
-    const { data } = await getGoogleUser(idToken);
-    await dispatch(addUserToStore(data.user));
-    toast.success(`welcome ${data.user.username}`);
-  } catch (error) {
-    console.log('error occured');
-  }
-};
 
 
 export const setGetProductsCategoriesParams = (
