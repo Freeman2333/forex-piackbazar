@@ -1,34 +1,13 @@
 import { toast } from 'react-toastify';
 import {
-  SetOrderAdressAction,
-  SetOrderNumberAction,
-  SetAdressAction,
-  SetNumberAction,
-  DeleteNumberAction,
-  DeleteAdressAction,
-  AddNumberAction,
-  SetIsEditingNumberAction,
-  SetIsEditingAdressAction,
-  AdressToSubmit,
-  ModifyAdressAction,
-  ModifyNumberAction,
-  AddAdressAction,
-  Adress,
   OrderDetailsToSubmit,
-  INumberToSubmit,
-  INumber,
-  ScheduleItem,
-  SetOrderTimeAction,
 } from '../types/checkout.types';
 
 import {
   RemoveProductFromCartAction,
   AddToCartAction,
   Product,
-  MainActionTypes,
-  ActiveModalComponent,
   CartActionTypes,
-  ToggleModalAction,
   ProductCategory,
   IncreaseProductAmountAction,
   DecreaseProductAmountAction,
@@ -45,32 +24,18 @@ import { AppDispatch } from '../store';
 
 
 import {
-  TOGGLE_MODAL,
   TOGGLE_CART,
   ADD_TO_CART,
   ADD_CATEGORIES,
   ADD_PRODUCTS,
-  ADD_NUMBER,
   FETCH_PRODUCT_STARTED,
   FETCH_PRODUCT_SUCCESS,
   FETCH_PRODUCT_FAILED,
   REMOVE_FROM_CART,
   INCREASE_AMOUNT,
   DECREASE_AMOUNT,
-  DELETE_ADRESS,
-  DELETE_NUMBER,
-  ADD_ADRESS,
-  SET_ADRESS,
-  SET_NUMBER,
-  SET_ORDER_ADRESS,
-  SET_ORDER_NUMBER,
-  SET_ORDER_TIME,
   POST_ORDER_STARTED,
   POST_ORDER_SUCCESS,
-  MODIFY_ADRESS,
-  SET_IS_EDITING_ADRESS,
-  MODIFY_NUMBER,
-  SET_IS_EDITING_NUMBER,
   SET_GET_PRODUCTS_CATEGORIES_PARAMS,
 } from './actionTypes';
 import { instance } from '../../api/api';
@@ -164,40 +129,6 @@ export const addToCart = (product: Product): AddToCartAction => ({
   payload: product,
 });
 
-export const addAdress = (adress: Adress): AddAdressAction => ({
-  type: ADD_ADRESS,
-  payload: adress,
-});
-
-export const modifyAdress = (adress: AdressToSubmit): ModifyAdressAction => ({
-  type: MODIFY_ADRESS,
-  payload: adress,
-});
-
-export const modifyNumber = (number: INumberToSubmit): ModifyNumberAction => ({
-  type: MODIFY_NUMBER,
-  payload: number,
-});
-
-export const setIsEditingAdress = (
-  bool: boolean,
-): SetIsEditingAdressAction => ({
-  type: SET_IS_EDITING_ADRESS,
-  payload: bool,
-});
-
-export const setIsEditingNumber = (
-  bool: boolean,
-): SetIsEditingNumberAction => ({
-  type: SET_IS_EDITING_NUMBER,
-  payload: bool,
-});
-
-export const addNumber = (number: INumber): AddNumberAction => ({
-  type: ADD_NUMBER,
-  payload: number,
-});
-
 export const removeFromCart = (id: string): RemoveProductFromCartAction => ({
   type: REMOVE_FROM_CART,
   payload: id,
@@ -211,43 +142,4 @@ export const increaseAmount = (id: string): IncreaseProductAmountAction => ({
 export const decreaseAmount = (id: string): DecreaseProductAmountAction => ({
   type: DECREASE_AMOUNT,
   payload: id,
-});
-
-export const deleteAdress = (id: string): DeleteAdressAction => ({
-  type: DELETE_ADRESS,
-  payload: id,
-});
-
-export const deleteNumber = (id: string): DeleteNumberAction => ({
-  type: DELETE_NUMBER,
-  payload: id,
-});
-
-export const setAdress = (title: string | null): SetAdressAction => ({
-  type: SET_ADRESS,
-  payload: title,
-});
-
-export const setNumber = (number: string): SetNumberAction => ({
-  type: SET_NUMBER,
-  payload: number,
-});
-
-export const setOrderAdress = (
-  adress: Adress | null,
-): SetOrderAdressAction => ({
-  type: SET_ORDER_ADRESS,
-  payload: adress,
-});
-
-export const setOrderNumber = (
-  number: INumber | null,
-): SetOrderNumberAction => ({
-  type: SET_ORDER_NUMBER,
-  payload: number,
-});
-
-export const setOrderTime = (time: ScheduleItem): SetOrderTimeAction => ({
-  type: SET_ORDER_TIME,
-  payload: time,
 });

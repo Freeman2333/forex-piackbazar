@@ -15,13 +15,10 @@ import ProductsList from '../Home/Products/ProductsList';
 import { RootState } from '../../store/reducers';
 import { ReactSVG } from 'react-svg';
 
-interface ProductParams {
-  id: string;
-}
 
 const Product: FC = () => {
   const dispatch = useDispatch();
-  const { id } = useParams<ProductParams>();
+  const { id } = useParams();
   const product = useSelector((state: RootState) => state.products.product);
   const { cart } = useSelector((state: RootState) => state.cart);
   const isInCart = !!cart.find((item) => item.id === id);
