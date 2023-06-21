@@ -4,10 +4,9 @@ import { useDispatch } from 'react-redux';
 import classes from './Products.module.sass';
 import { getProducts } from '../../../store/actions/actions';
 import { ProductCategory } from '../../../store/types/main.types';
-import { SVGComponent } from '../../../utils/general-types';
 
 interface CategoryProps {
-  img?: SVGComponent;
+  img?: React.ReactNode;
   cat: ProductCategory;
 }
 
@@ -31,7 +30,7 @@ const Category: FC<CategoryProps> = ({ img: Img, cat }) => {
         onClick={(e) => handleCategoryClick(e, cat.id)}
         className={classes.listLink}
       >
-        {Img && <Img className={classes.catImg} />}
+        {Img}
         <span className="small-title">{cat.title}</span>
       </a>
       {isUnfolded && (

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';npm 
+import React, { FC } from 'react'
 import { useDispatch } from 'react-redux';
 import { toggleCart } from '../../store/actions/actions';
 import itemsImg from '../../assets/items-img.svg';

@@ -30,7 +30,7 @@ const OrderConfirm: FC = () => {
             <div className="order-top__item">
               <h3 className="small-title">Date</h3>
               <span className="order-top_item-val">
-                {dateToFormat && <Moment format="ll">{dateToFormat!}</Moment>}
+                {/* {dateToFormat && <Moment format="ll">{dateToFormat!}</Moment>} */}
               </span>
             </div>
             <div className="order-top__item">
@@ -50,7 +50,7 @@ const OrderConfirm: FC = () => {
             <div className="order-block__item">
               <h3 className="small-title">Order Time:</h3>
               <span>
-                <Moment format="ll">{dateToFormat!}</Moment>
+                {/* <Moment format="ll">{dateToFormat!}</Moment> */}
               </span>
             </div>
             <div className="order-block__item">

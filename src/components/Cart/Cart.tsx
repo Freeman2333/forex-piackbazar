@@ -24,18 +24,14 @@ const Cart: FC = () => {
 
   return (
     <aside
-      className={classNames('cart-wrapper', { 'is-cart-open': isCartOpen })}
+      className={classNames("cart-wrapper", { "is-cart-open": isCartOpen })}
     >
       <CartTrigger totalAmount={totalAmount} totalItems={totalItems} />
       <div className="cart">
         <div className="cart__top">
           <div className="cart-items">
             <img src={itemsImg} alt="cart items" className="cart-items__img" />
-            <h4 className="cart-items__number">
-              {totalItems}
-              {' '}
-              Items(s)
-            </h4>
+            <h4 className="cart-items__number">{totalItems} Items(s)</h4>
           </div>
           <button
             type="button"
@@ -63,13 +59,12 @@ const Cart: FC = () => {
           <Link
             to="/checkout"
             onClick={() => dispatch(toggleCart())}
-            className={classNames('bar')}
+            className={classNames("bar", {
+              disabled: cart.length === 0,
+            })}
           >
             <span>Checkout</span>
-            <div className="bar__price">
-              $
-              {totalAmount}
-            </div>
+            <div className="bar__price">${totalAmount}</div>
           </Link>
         </div>
       </div>

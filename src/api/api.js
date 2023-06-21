@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 import { toast } from 'react-toastify';
 
-export const baseURL = process.env.REACT_APP_BASE_URL;
+export const baseURL = "https://pickbazar.batarin.dev";
 export const instance = axios.create({
   baseURL,
 });

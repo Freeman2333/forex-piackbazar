@@ -10,9 +10,10 @@ import {
   unselectProduct,
 } from '../../store/actions/actions';
 import { baseURL } from '../../api/api';
-import { ReactComponent as Basket } from '../../assets/basket.svg';
+import basketImg from '../../assets/basket.svg';
 import ProductsList from '../Home/Products/ProductsList';
 import { RootState } from '../../store/reducers';
+import { ReactSVG } from 'react-svg';
 
 interface ProductParams {
   id: string;
@@ -83,10 +84,7 @@ const Product: FC = () => {
           <div className={classes.productRight}>
             <div className={classes.infoLine}>
               <h3 className="large-title">{product.name}</h3>
-              <h3 className="price">
-                $
-                {product.price}
-              </h3>
+              <h3 className="price">${product.price}</h3>
             </div>
             <h4 className="gray-title">{product.size}</h4>
             <p className={classes.descr}>{product.description}</p>
@@ -96,7 +94,7 @@ const Product: FC = () => {
                 className="btn btn-product"
                 onClick={addToCartHandler}
               >
-                <Basket />
+                <ReactSVG src={basketImg} />
                 Cart
               </button>
             </div>

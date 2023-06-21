@@ -6,13 +6,8 @@ import {
   totalDiscountSelector,
 } from '../../store/selectors';
 
-import CheckoutAdresses from './CheckoutAdresses';
-import CheckoutNumbers from './CheckoutNumbers';
-import CheckoutSchedule from './CheckoutSchedule';
-import CheckoutPayment from './CheckoutPayment';
 import { RootState } from '../../store/reducers';
 import { ProductInCart } from '../../store/types/main.types';
-import { CheckoutState } from '../../store/types/checkout.types';
 
 const Checkout: FC = () => {
   const products: ProductInCart[] = useSelector(
@@ -23,33 +18,8 @@ const Checkout: FC = () => {
   const deliveryFee: number = useSelector(
     (state: RootState) => state.cart.deliveryFee,
   );
-  const {
-    adresses,
-    schedules,
-    numbers,
-    paymentType,
-    orderNumber,
-    orderAdress,
-    orderTime,
-    orderDetails,
-  }: CheckoutState = useSelector((state: RootState) => state.checkout);
-
   return (
     <div className="checkout-page">
-      <div className="checkout-left">
-        <CheckoutAdresses adresses={adresses} />
-        <CheckoutSchedule schedules={schedules} />
-        <CheckoutNumbers numbers={numbers} />
-        <CheckoutPayment
-          paymentType={paymentType}
-          order={{
-            orderNumber,
-            orderAdress,
-            orderTime,
-          }}
-          orderDetails={orderDetails}
-        />
-      </div>
       <div className="checkout-right">
         <h3 className="checkout-title">Your Order</h3>
         <ul className="checkout-list">

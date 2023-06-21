@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import classes from './Products.module.sass';
-import ProductCard from '../../../components/userInfo/ProductCard/ProductCard';
+import ProductCard from '../../../components/ProductCard/ProductCard';
 import { Product } from '../../../store/types/main.types';
 
 interface ProductList {

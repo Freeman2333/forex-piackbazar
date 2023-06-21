@@ -1,18 +1,19 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ReactSVG } from "react-svg";
 import classes from './Products.module.sass';
 import { getCategories } from '../../../store/actions/actions';
 import Category from './Category';
-import { ReactComponent as cat1 } from '../../../assets/cats/1.svg';
-import { ReactComponent as cat4 } from '../../../assets/cats/4.svg';
-import { ReactComponent as cat7 } from '../../../assets/cats/7.svg';
-import { ReactComponent as cat16 } from '../../../assets/cats/16.svg';
-import { ReactComponent as cat21 } from '../../../assets/cats/21.svg';
-import { ReactComponent as cat28 } from '../../../assets/cats/28.svg';
-import { ReactComponent as cat35 } from '../../../assets/cats/35.svg';
-import { ReactComponent as cat40 } from '../../../assets/cats/40.svg';
-import { ReactComponent as cat47 } from '../../../assets/cats/47.svg';
-import { ReactComponent as cat55 } from '../../../assets/cats/55.svg';
+import cat1 from '../../../assets/cats/1.svg';
+import cat4 from "../../../assets/cats/4.svg";
+import cat7 from "../../../assets/cats/7.svg";
+import cat16 from "../../../assets/cats/16.svg";
+import cat21 from "../../../assets/cats/21.svg";
+import cat28 from "../../../assets/cats/28.svg";
+import cat35 from "../../../assets/cats/35.svg";
+import cat40 from "../../../assets/cats/40.svg";
+import cat47 from "../../../assets/cats/47.svg";
+import cat55 from "../../../assets/cats/55.svg";
 import { RootState } from '../../../store/reducers';
 
 /* eslint consistent-return: off */
@@ -40,7 +41,7 @@ const getImg = (id: number) => {
     case 55:
       return cat55;
     default:
-      break;
+      return cat1;
   }
 };
 const Sidebar: FC = () => {
@@ -56,7 +57,7 @@ const Sidebar: FC = () => {
     <aside className={classes.sidebar}>
       <ul className={classes.list}>
         {categories.map((cat) => (
-          <Category key={cat.id} cat={cat} img={getImg(cat.id)} />
+          <Category key={cat.id} cat={cat} img={<ReactSVG src={getImg(cat.id)}/>} />
         ))}
       </ul>
     </aside>

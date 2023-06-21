@@ -1,7 +1,6 @@
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const SET_ACTIVE_MODAL_COMPONENT = 'SET_ACTIVE_MODAL_COMPONENT';
 export const TOGGLE_CART = 'TOGGLE_CART';
-export const ADD_USER = 'ADD_USER';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const ADD_ADRESS = 'ADD_ADRESS';
 export const ADD_NUMBER = 'ADD_NUMBER';
@@ -16,7 +15,6 @@ export const INCREASE_AMOUNT = 'INCREASE_AMOUNT';
 export const DECREASE_AMOUNT = 'DECREASE_AMOUNT';
 export const DELETE_ADRESS = 'DELETE_ADRESS';
 export const DELETE_NUMBER = 'DELETE_NUMBER';
-export const ADD_COUPONS = 'ADD_COUPONS';
 export const ADD_CATEGORIES = 'ADD_CATEGORIES';
 export const ADD_PRODUCTS = 'ADD_PRODUCTS';
 export const MODIFY_ADRESS = 'MODIFY_ADRESS';

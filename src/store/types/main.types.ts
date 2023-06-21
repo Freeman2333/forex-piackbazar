@@ -1,11 +1,9 @@
 import {
-  SET_ACTIVE_MODAL_COMPONENT,
   ADD_TO_CART,
   INCREASE_AMOUNT,
   DECREASE_AMOUNT,
   REMOVE_FROM_CART,
   TOGGLE_CART,
-  TOGGLE_MODAL,
 } from '../actions/actionTypes';
 
 interface ProductDiscount {
@@ -27,26 +25,6 @@ export interface Product {
   category: ProductCategory;
 }
 
-export enum ActiveModalComponent {
-  SIGNUP = 'signup',
-  SIGNIN = 'signin',
-  ADD_ADRESS_FORM = 'addAdressForm',
-  ADD_NUMBERS_FORM = 'addNumberForm',
-}
-
-interface GradientColors {
-  start: string;
-  end: string;
-}
-
-export interface Coupon {
-  id: number;
-  title: string;
-  description: string;
-  buttonText: string;
-  gradientColors: GradientColors;
-}
-
 export interface ProductInCart extends Product {
   amount: number;
 }
@@ -62,11 +40,6 @@ export interface CartState {
   isCartOpen: boolean;
   cart: ProductInCart[];
   deliveryFee: number;
-}
-
-export interface MainReducerState {
-  isModalOpen: boolean;
-  activeModalComponent: ActiveModalComponent;
 }
 
 export interface ToggleCartAction {
@@ -100,16 +73,3 @@ export type CartActionTypes =
   | RemoveProductFromCartAction
   | ToggleCartAction;
 
-export interface ToggleModalAction {
-  type: typeof TOGGLE_MODAL;
-}
-
-export interface SetActiveModalAction {
-  type: typeof SET_ACTIVE_MODAL_COMPONENT;
-  payload: ActiveModalComponent;
-}
-
-
-export type MainActionTypes =
-  | ToggleModalAction
-  | SetActiveModalAction
