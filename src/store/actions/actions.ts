@@ -25,11 +25,9 @@ import {
   RemoveProductFromCartAction,
   AddToCartAction,
   Product,
-  AddCouponsAction,
   MainActionTypes,
   ActiveModalComponent,
   CartActionTypes,
-  Coupon,
   ToggleModalAction,
   ProductCategory,
   IncreaseProductAmountAction,
@@ -57,7 +55,6 @@ import {
   TOGGLE_CART,
   ADD_USER,
   ADD_TO_CART,
-  ADD_COUPONS,
   ADD_CATEGORIES,
   ADD_PRODUCTS,
   ADD_NUMBER,
@@ -113,10 +110,6 @@ export const addUserToStore = (user: User | null): UserActionTypes => ({
   payload: user,
 });
 
-export const addCoupons = (coupons: Coupon[]): AddCouponsAction => ({
-  type: ADD_COUPONS,
-  payload: coupons,
-});
 
 export const addProducts = (products: Product[]): AddProductsAction => ({
   type: ADD_PRODUCTS,
@@ -156,10 +149,6 @@ export const getGoogleUserAction = (idToken: string) => async (dispatch: AppDisp
   }
 };
 
-export const getCoupons = () => async (dispatch: AppDispatch) => {
-  const { data } = await instance.get('coupons');
-  dispatch(addCoupons(data));
-};
 
 export const setGetProductsCategoriesParams = (
   params: GetProductCategoriesParams,

@@ -1,5 +1,4 @@
 import {
-  ADD_COUPONS,
   SET_ACTIVE_MODAL_COMPONENT,
   ADD_TO_CART,
   INCREASE_AMOUNT,
@@ -68,7 +67,6 @@ export interface CartState {
 export interface MainReducerState {
   isModalOpen: boolean;
   activeModalComponent: ActiveModalComponent;
-  coupons: Coupon[];
 }
 
 export interface ToggleCartAction {
@@ -111,12 +109,7 @@ export interface SetActiveModalAction {
   payload: ActiveModalComponent;
 }
 
-export interface AddCouponsAction {
-  type: typeof ADD_COUPONS;
-  payload: Coupon[];
-}
 
 export type MainActionTypes =
   | ToggleModalAction
   | SetActiveModalAction
-  | AddCouponsAction;
