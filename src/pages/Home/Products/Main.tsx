@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { productLimitPerPage } from '../../../constants';
+import { PRODUCTS_PER_PAGE } from "../../../constants";
 import { getProducts } from '../../../store/actions/actions';
 import { RootState } from '../../../store/reducers';
 import classes from './Products.module.sass';
@@ -12,8 +12,8 @@ const Main: FC = () => {
   const getProductCategoriesParams = useSelector(
     (state: RootState) => state.products.getProductCategoriesParams,
   );
-  const [productLimit, setProductLimit] = useState<number>(productLimitPerPage);
-  const loadMore = () => setProductLimit(productLimit + productLimitPerPage);
+  const [productLimit, setProductLimit] = useState<number>(PRODUCTS_PER_PAGE);
+  const loadMore = () => setProductLimit(productLimit + PRODUCTS_PER_PAGE);
   useEffect(() => {
     dispatch(getProducts({ productLimit, ...getProductCategoriesParams }));
   }, [productLimit, dispatch]);
