@@ -51,7 +51,7 @@ const CartItem: FC<CartItemProps> = ({ item }) => {
         <h4 className="gray-title">{`${amount} X ${size}`}</h4>
       </div>
       <div className="cart__item-total">
-        <h3 className="small-title">{`$${amount * price}`}</h3>
+        <h3 className="small-title">{`$${(amount * price).toFixed(2)}`}</h3>
       </div>
       <button
         type="button"

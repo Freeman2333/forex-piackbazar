@@ -29,7 +29,7 @@ const CartTrigger: FC<CartTriggerProps> = ({ totalAmount, totalItems }) => {
       </div>
       <button type="button" className="btn btn-white">
         $
-        {totalAmount}
+        {totalAmount.toFixed(2)}
       </button>
     </div>
   );

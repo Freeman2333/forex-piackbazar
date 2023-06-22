@@ -64,7 +64,7 @@ const Cart: FC = () => {
             })}
           >
             <span>Checkout</span>
-            <div className="bar__price">${totalAmount}</div>
+            <div className="bar__price">${totalAmount.toFixed(2)}</div>
           </Link>
         </div>
       </div>
