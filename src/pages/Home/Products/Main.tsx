@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { PRODUCTS_PER_PAGE } from "../../../constants";
 import { getProducts } from '../../../store/actions/actions';

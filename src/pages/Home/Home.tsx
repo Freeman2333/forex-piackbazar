@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Hero from './Hero';
 import Products from './Products/Products';

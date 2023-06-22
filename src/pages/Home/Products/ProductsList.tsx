@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import  { FC } from 'react';
 import classes from './Products.module.sass';
 import ProductCard from '../../../components/ProductCard/ProductCard';
 import { Product } from '../../../store/types/main.types';
