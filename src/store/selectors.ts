@@ -32,7 +32,7 @@ export const totalSelector: OutputSelector<
 );
 
 export const isInCartSelector = (
-  id: string,
+  id: number,
 ): OutputSelector<RootState, boolean, (res1: ProductInCart[]
 ) => boolean> => createSelector(
   (state: RootState) => state.cart.cart,

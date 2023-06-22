@@ -14,14 +14,15 @@ import basketImg from '../../assets/basket.svg';
 import ProductsList from '../Home/Products/ProductsList';
 import { RootState } from '../../store/reducers';
 import { ReactSVG } from 'react-svg';
+import { isInCartSelector } from "../../store/selectors";
 
 
 const Product: FC = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const product = useSelector((state: RootState) => state.products.product);
-  const { cart } = useSelector((state: RootState) => state.cart);
-  const isInCart = !!cart.find((item) => item.id === id);
+  const isInCart = useSelector(isInCartSelector(+id!));
+  
   const isProductLoading = useSelector(
     (state: RootState) => state.products.isProductLoading,
   );
@@ -43,7 +44,7 @@ const Product: FC = () => {
     if (!isInCart) {
       dispatch(addToCart(product));
     } else {
-      dispatch(increaseAmount(id));
+      dispatch(increaseAmount(+id));
     }
   };
   return (
@@ -61,7 +62,7 @@ const Product: FC = () => {
             <div className={classes.productGallery}>
               {photos.map((img, idx) => (
                 <div
-                  key={img}
+                  key={idx}
                   role="button"
                   tabIndex={0}
                   className={classNames(classes.galleryItem, {
